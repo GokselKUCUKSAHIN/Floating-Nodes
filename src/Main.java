@@ -27,7 +27,7 @@ public class Main extends Application
         Pane root = new Pane();
         child = root.getChildren();
         //
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 20; i++)
         {
             new Knot(Utils.getRandomInt(W_),Utils.getRandomInt(H_));
         }
@@ -58,11 +58,23 @@ public class Main extends Application
                     System.out.println("Child Count: " + child.size());
                     break;
                 }
+                case F4:
+                {
+                    // Hide/Show Ring Visible
+                    for(Knot knot: Knot.knots)
+                    {
+                        knot.toggleRingVisiblity();
+                    }
+                    break;
+                }
             }
         });
         update = new Timeline(new KeyFrame(Duration.millis(16), e -> {
             //60 fps
-            System.out.println("loop test");
+            for(Knot knot: Knot.knots)
+            {
+                knot.update();
+            }
 
         }));
         update.setCycleCount(Timeline.INDEFINITE);
