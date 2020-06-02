@@ -91,4 +91,9 @@ public class Knot extends Group
     {
         this.ring.setVisible(!ring.isVisible());
     }
+
+    static void makeConnection()
+    {
+
+    }
 }
