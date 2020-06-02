@@ -31,6 +31,7 @@ public class Main extends Application
         {
             new Knot(Utils.getRandomInt(W_), Utils.getRandomInt(H_));
         }
+        Knot.makeConnection();
         for (Knot knot : Knot.knots)
         {
             child.addAll(knot);
@@ -75,7 +76,10 @@ public class Main extends Application
             {
                 knot.update();
             }
-
+            for (Edge edge: Edge.edges)
+            {
+                edge.update();
+            }
         }));
         update.setCycleCount(Timeline.INDEFINITE);
         update.setRate(1);

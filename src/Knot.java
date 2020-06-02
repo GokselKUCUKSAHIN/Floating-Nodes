@@ -11,7 +11,7 @@ public class Knot extends Group
 
     public static ArrayList<Knot> knots = new ArrayList<>();
 
-    public static double RANGE = 250;
+    public static double RANGE = 200;
     private DoubleProperty r = new SimpleDoubleProperty(10);
     public Vec2D pos; // Position Vector Variable
     public Vec2D vel = new Vec2D();
@@ -20,7 +20,7 @@ public class Knot extends Group
     private Circle ring = new Circle();
     private double xOff = Utils.getRandom(100000, 999999);
     private double yOff = Utils.getRandom(100000, 999999);
-    private double zOff = Utils.getRandom(10000, 999999);
+    private double zOff = Utils.getRandom(100000, 999999);
     private double offset = 0.01;
 
     public Knot()
@@ -56,19 +56,20 @@ public class Knot extends Group
     public void update()
     {
         // PERLIN NOISE
-        double pX = SimpleNoise.noise(xOff, 0, -0.1, 0.1, true);
-        double pY = SimpleNoise.noise(yOff, 0, -0.1, 0.1, true);
+        double posX = SimpleNoise.noise(xOff, 0, 0, Main.W_, true);
+        //double pX = SimpleNoise.noise(xOff, 0, -0.2, 0.2, true);
+        double posY = SimpleNoise.noise(yOff, 0, 0, Main.H_, true);
+        //double pY = SimpleNoise.noise(yOff, 0, -0.2, 0.2, true);
         double pZ = SimpleNoise.noise(zOff, 0, 2, 8, true);
-        xOff += 0.005;
-        yOff += 0.005;
+        xOff += 0.0005;
+        yOff += 0.0005;
         zOff += 0.0005;
         // RADIUS
         r.setValue(pZ);
-        // PHYSICS STUFF
-        acc = new Vec2D(pX, pY);
-        vel = vel.add(acc);
-        pos = pos.add(vel); // Vector sum.
-        vel = vel.multiply(0.9);
+
+        pos.x.setValue(posX);
+        pos.y.setValue(posY);
+
         // RELOCATE
         if (pos.x.get() > Main.W_ + 5)
         {
@@ -99,10 +100,8 @@ public class Knot extends Group
         {
             for (int i = 0; i < j; i++)
             {
-                //System.out.printf("  %c%c", list[j], list[i]);
-
+                new Edge(knots.get(i), knots.get(j));
             }
-            System.out.println();
         }
     }
 }
