@@ -11,7 +11,7 @@ public class Knot extends Group
 
     public static ArrayList<Knot> knots = new ArrayList<>();
 
-    public static double RANGE = 200;
+    public static double RANGE = 100; //200
     private DoubleProperty r = new SimpleDoubleProperty(10);
     public Vec2D pos; // Position Vector Variable
     public Vec2D vel = new Vec2D();
@@ -60,7 +60,7 @@ public class Knot extends Group
         //double pX = SimpleNoise.noise(xOff, 0, -0.2, 0.2, true);
         double posY = SimpleNoise.noise(yOff, 0, 0, Main.H_, true);
         //double pY = SimpleNoise.noise(yOff, 0, -0.2, 0.2, true);
-        double pZ = SimpleNoise.noise(zOff, 0, 2, 8, true);
+        double pZ = SimpleNoise.noise(zOff, 0, 3, 6, true);
         xOff += 0.0005;
         yOff += 0.0005;
         zOff += 0.0005;

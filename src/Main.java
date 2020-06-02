@@ -27,7 +27,7 @@ public class Main extends Application
         Pane root = new Pane();
         child = root.getChildren();
         //
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 100; i++) //20
         {
             new Knot(Utils.getRandomInt(W_), Utils.getRandomInt(H_));
         }
