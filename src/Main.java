@@ -11,20 +11,31 @@ import javafx.util.Duration;
 
 public class Main extends Application
 {
+
     public static ObservableList<Node> child;
     //
     private static final String title = "JellyBeanci";
-    public static final int width = 1200;
-    public static final int height = 800;
+    public static final int W_ = 800;
+    public static final int H_ = 800;
     private static Color backcolor = Color.rgb(51, 51, 51);
 
     private static Timeline update;
 
     @Override
-    public void start(Stage stage) throws Exception
+    public void start(Stage stage)
     {
         Pane root = new Pane();
         child = root.getChildren();
+        //
+        for (int i = 0; i < 50; i++)
+        {
+            new Knot(Utils.getRandomInt(W_),Utils.getRandomInt(H_));
+        }
+        for(Knot knot: Knot.knots)
+        {
+            child.addAll(knot);
+        }
+
         //
         root.setOnKeyPressed(e -> {
             switch (e.getCode())
@@ -61,7 +72,7 @@ public class Main extends Application
         //
         stage.setTitle(title);
         stage.setResizable(false);
-        stage.setScene(new Scene(root, width - 10, height - 10,backcolor));
+        stage.setScene(new Scene(root, W_ - 10, H_ - 10, backcolor));
         stage.show();
         root.requestFocus();
     }
