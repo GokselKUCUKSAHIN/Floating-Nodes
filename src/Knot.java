@@ -11,7 +11,7 @@ public class Knot extends Group
 
     public static ArrayList<Knot> knots = new ArrayList<>();
 
-    private double range = 100;
+    public static double RANGE = 250;
     private DoubleProperty r = new SimpleDoubleProperty(10);
     public Vec2D pos; // Position Vector Variable
     public Vec2D vel = new Vec2D();
@@ -42,7 +42,7 @@ public class Knot extends Group
 
     public void draw()
     {
-        ring.setRadius(range);
+        ring.setRadius(RANGE);
         ring.setFill(Color.TRANSPARENT);
         ring.setStroke(Color.YELLOW);
         ring.setStrokeWidth(0.4);
@@ -94,6 +94,15 @@ public class Knot extends Group
 
     static void makeConnection()
     {
+        int len = Knot.knots.size();
+        for (int j = 1; j < len; j++)
+        {
+            for (int i = 0; i < j; i++)
+            {
+                //System.out.printf("  %c%c", list[j], list[i]);
 
+            }
+            System.out.println();
+        }
     }
 }

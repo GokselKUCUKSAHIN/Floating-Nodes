@@ -42,7 +42,16 @@ public class Edge extends Group
     public void update()
     {
         // Calculate Distance Between End and Start and re-arrange Width value
-
+        double dist = str.distance(end);
+        if (dist <= Knot.RANGE)
+        {
+            //Stay Connected
+            width.setValue(Utils.map(dist, 0, 100, 0.1, 3));
+        } else
+        {
+            //Disconnect
+            //selfDestruct();
+        }
     }
 
     public void selfDestruct()

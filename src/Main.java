@@ -29,9 +29,9 @@ public class Main extends Application
         //
         for (int i = 0; i < 20; i++)
         {
-            new Knot(Utils.getRandomInt(W_),Utils.getRandomInt(H_));
+            new Knot(Utils.getRandomInt(W_), Utils.getRandomInt(H_));
         }
-        for(Knot knot: Knot.knots)
+        for (Knot knot : Knot.knots)
         {
             child.addAll(knot);
         }
@@ -61,7 +61,7 @@ public class Main extends Application
                 case F4:
                 {
                     // Hide/Show Ring Visible
-                    for(Knot knot: Knot.knots)
+                    for (Knot knot : Knot.knots)
                     {
                         knot.toggleRingVisiblity();
                     }
@@ -71,7 +71,7 @@ public class Main extends Application
         });
         update = new Timeline(new KeyFrame(Duration.millis(16), e -> {
             //60 fps
-            for(Knot knot: Knot.knots)
+            for (Knot knot : Knot.knots)
             {
                 knot.update();
             }
@@ -88,8 +88,6 @@ public class Main extends Application
         stage.show();
         root.requestFocus();
     }
-
-
 
 
     public static void main(String[] args)
