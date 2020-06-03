@@ -12,7 +12,7 @@ public class Knot extends Group
     public static ArrayList<Knot> knots = new ArrayList<>();
 
     public static double RANGE = 100; //200
-    private DoubleProperty r = new SimpleDoubleProperty(10);
+    private DoubleProperty r = new SimpleDoubleProperty(3);
     public Vec2D pos; // Position Vector Variable
     public Vec2D vel = new Vec2D();
     public Vec2D acc = new Vec2D();
@@ -49,7 +49,7 @@ public class Knot extends Group
         ring.setVisible(false);
         //
         body.setFill(Color.SNOW);
-        r.setValue(Utils.getRandom(1, 10));
+        r.setValue(Utils.getRandom(3, 8));
         this.getChildren().addAll(ring, body);
     }
 
@@ -63,13 +63,14 @@ public class Knot extends Group
         double pZ = SimpleNoise.noise(zOff, 0, 3, 6, true);
         xOff += 0.0005;
         yOff += 0.0005;
-        zOff += 0.0005;
+        zOff += 0.001;
         // RADIUS
         r.setValue(pZ);
 
         pos.x.setValue(posX);
         pos.y.setValue(posY);
 
+        /*
         // RELOCATE
         if (pos.x.get() > Main.W_ + 5)
         {
@@ -86,6 +87,7 @@ public class Knot extends Group
         {
             pos.y.setValue(Main.H_ + 5);
         }
+        */
     }
 
     public void toggleRingVisiblity()
